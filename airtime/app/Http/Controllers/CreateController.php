@@ -18,13 +18,7 @@ class CreateController extends Controller
 	public function register(Request $request)
     {
 		
-		$this->validate($request,[
-		'email' =>"required|string|email|max:50",
-        'phone' => "required|string|phone|max:50",
-        'utype' => "required|integer|uytpe|max:10",
-        'password' =>"required|string|password|max:50",
-		]);
-
+		
 		
 		if($request->password!=$request->cpassword){
 			 return redirect('/register')->with('signup_Success','Password Mismatch');	 
@@ -42,9 +36,7 @@ class CreateController extends Controller
 	
 	  public function authenticate(Request $request)
     {
-		$this->validate($request,[
-		'email' =>"required|string|email|max:30",
-		]);
+		
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
