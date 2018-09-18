@@ -41,7 +41,7 @@
                                         <div class="form-group row">
                                             <label for="default-input" class="col-sm-2 form-control-label">Card Pin</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="pin" class="form-control" id="default-input" placeholder="Card Pin" required>
+                                                <input type="text" name="pin" class="form-control" id="default-input" placeholder="Card Pin" required max="40" required>
 												
 												 @if ($errors->has('pin'))
                                     <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                                             <label for="default-input" class="col-sm-2 form-control-label">Amount</label>
                                             <div class="col-sm-10">
                                                 
-												<input name="amount" type="text" class="form-control" id="default-input" placeholder="Card Amount" required>
+												<input name="amount" type="number" class="form-control" id="default-input" placeholder="Card Amount" required>
 
 												<input type="hidden" class="form-control" id="default-input" name="owner_id" value="{{ Auth::user()->id }}">
 												

@@ -17,9 +17,19 @@ class CreateController extends Controller
 	
 	public function register(Request $request)
     {
+		
+		$this->validate($request,[
+		'email' =>"required|string|email|max:50",
+        'phone' => "required|string|phone|max:50",
+        'utype' => "required|integer|uytpe|max:10",
+        'password' =>"required|string|password|max:50",
+		]);
+
+		
 		if($request->password!=$request->cpassword){
-			 return redirect('/register')->with('signup_Success','Password Mismatch');
+			 return redirect('/register')->with('signup_Success','Password Mismatch');	 
 		}
+		
       $user = User::create([
         'email' => $request->email,
         'phone' => $request->phone,
@@ -32,6 +42,9 @@ class CreateController extends Controller
 	
 	  public function authenticate(Request $request)
     {
+		$this->validate($request,[
+		'email' =>"required|string|email|max:30",
+		]);
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -47,19 +60,10 @@ class CreateController extends Controller
     }
 	
 	
-	
-	
 	//Add new Airtime
 	public function addAirtime(Request $request)
     {
-		//print_r($request);
-		/* $request->validate([
-		'owner_id' => 'bail|required|max:11',
-		'card_pin' => 'bail|required|max:100',
-		'amount' => 'bail|required|max:11',
-		'provider' => 'bail|required|max:100',
-		]);
-		 */
+	
       $user = cards::create([
         'owner_id' => $request->owner_id,
         'card_pin' => $request->pin,

@@ -42,7 +42,7 @@
 					@if(count($errors)>0)
 						
 						@foreach($errors as $error)
-						<div class="alert alert-danger">{{$error}}</div>	
+						<div class="alert alert-danger ks-solid ks-active-border">{{$error}}</div>	
 						@endforeach
 					@endif
 					
