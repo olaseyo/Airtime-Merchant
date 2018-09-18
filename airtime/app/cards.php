@@ -9,6 +9,6 @@ class cards extends Model
     //
 	
 	  protected $fillable = [
-        'owner_id','card_pin','amount', 'sold','provider',
+        'owner_id','card_pin','amount', 'sold','used','provider',
     ];
 }

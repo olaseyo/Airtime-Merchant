@@ -58,9 +58,9 @@
 							</td> 
 							
 							<td>@if($card->used==1) 
-								<button class="btn btn-danger">Not Yet Used</button>
+								<button class="btn btn-danger">Used</button>
 							@else
-								<button class="btn btn-success">Used</button>
+								<button class="btn btn-success">Not Yet Used</button>
 							@endif
 							</td>
 							@include('modal')	

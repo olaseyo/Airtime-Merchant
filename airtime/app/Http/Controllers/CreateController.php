@@ -27,9 +27,6 @@ class CreateController extends Controller
         'password' => bcrypt($request->password),
       ]);
 
-     // $token = auth()->login($user);
-
-     // return $this->respondWithToken($token);
 	  return redirect('/register')->with('signup_Success','Registration Successful. Please Login To Continue');
     }
 	
@@ -156,7 +153,7 @@ class CreateController extends Controller
 	 $total_unsold=DB::table('cards')->where("sold","=",0)->where("cards.owner_id","=",Auth::user()->id)->count();
 	 if($total_unsold>0 and $total_card>0){
 	 $unsold_percent=round(($total_unsold/$total_card)*100,2);
-	 }else{ $total_unsold=0; }
+	 }else{ $unsold_percent=0; }
 	 
 	 $total_amount_made=DB::table('recharges') ->join("cards","recharges.card","=","cards.id")->where("recharges.merchant","=",Auth::user()->id)->sum('amount'); 
 	 
