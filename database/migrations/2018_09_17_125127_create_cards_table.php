@@ -18,8 +18,8 @@ class CreateCardsTable extends Migration
             $table->integer('owner_id');
             $table->string('card_pin');
             $table->integer('amount');
-            $table->integer('sold')->nullable;
-            $table->integer('used')->nullable;
+            $table->integer('sold')->default(0);
+            $table->integer('used')->default(0);
             $table->string('provider');
             $table->timestamps();
         });

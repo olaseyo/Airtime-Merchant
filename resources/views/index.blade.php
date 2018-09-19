@@ -22,13 +22,7 @@
     </div>
     <div class="ks-body">
         <div class="ks-logo">Airtime Merchanted</div>
-		@if(count($errors)>0)
-						
-						@foreach($errors as $error)
-						<div class="alert alert-danger ks-solid ks-active-border">{{$error}}</div>	
-						@endforeach
-					@endif
-					
+		
 		@if(session('login_error'))
 						<div class="alert alert-danger ks-solid ks-active-border">{{ session('login_error') }}</div>	
 						@endif
@@ -45,6 +39,11 @@
                             <span class="icon-addon">
                                 <span class="fa fa-at"></span>
                             </span>
+							@if ($errors->has('email'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,6 +53,11 @@
                                 <span class="fa fa-key"></span>
                             </span>
                         </div>
+						@if ($errors->has('password'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">LOGIN</button>

@@ -43,9 +43,9 @@
                                             <div class="col-sm-10">
                                                 <input type="text" name="pin" class="form-control" id="default-input" placeholder="Card Pin" required max="40" required>
 												
-												 @if ($errors->has('pin'))
+												 @if ($errors->has('card_pin'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('pin') }}</strong>
+                                        <strong>{{ $errors->first('card_pin') }}</strong>
                                     </span>
                                 @endif
                                             </div>
@@ -57,13 +57,13 @@
 												<input name="amount" type="number" class="form-control" id="default-input" placeholder="Card Amount" required>
 
 												<input type="hidden" class="form-control" id="default-input" name="owner_id" value="{{ Auth::user()->id }}">
-												
-												 @if ($errors->has('amount'))
-                                    <span class="invalid-feedback" role="alert">
+                                            </div>
+											
+											@if ($errors->has('amount'))
+                                    <span class="ks-color-danger" role="alert">
                                         <strong>{{ $errors->first('amount') }}</strong>
                                     </span>
                                 @endif
-                                            </div>
                                         </div>
                                       
                                         <div class="form-group row">
@@ -74,13 +74,13 @@
                                                     <option value="glo">Glo</option>
                                                     <option value="airtel">airtel</option>
                                                 </select>
-												
-												 @if ($errors->has('provider'))
-                                    <span class="invalid-feedback" role="alert">
+                                            </div>
+											@if ($errors->has('provider'))
+                                    <span class="ks-color-danger" role="alert">
                                         <strong>{{ $errors->first('provider') }}</strong>
                                     </span>
                                 @endif
-                                            </div>
+								
                                         </div>
                                         <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">REGISTER</button>

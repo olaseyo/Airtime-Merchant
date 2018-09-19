@@ -32,28 +32,25 @@
 						@endif
 
         <div class="card panel panel-default ks-light ks-panel" >
-		<?php //var_dump($errors); 
+		<?php 
+		//var_dump($errors); 
 		
 		?>
             <div class="card-block" style="height:500px !important;">
                 <form class="form-container" id="login_form" action="{{ url('/user_signup') }}" method="POST">
 				{{ csrf_field() }}
 					  <h4 class="ks-header">REGISTER</h4>
-					@if(count($errors)>0)
-						
-						@foreach($errors as $error)
-						<div class="alert alert-danger ks-solid ks-active-border">{{$error}}</div>	
-						@endforeach
-					@endif
-					
-					
-                 
 					<div class="form-group">
                         <div class="input-icon icon-left icon-lg icon-color-primary">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email">
                             <span class="icon-addon">
                                 <span class="fa fa-at"></span>
                             </span>
+							@if ($errors->has('email'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
 					
@@ -64,6 +61,12 @@
                             <span class="icon-addon">
                                 <span class="fa fa-phone"></span>
                             </span>
+							
+							@if ($errors->has('users.phone'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('users.phone') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div>
 
@@ -76,6 +79,11 @@
 							</select>
                             
                         </div>
+						@if ($errors->has('utype'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('utype') }}</strong>
+                                    </span>
+                                @endif
                     </div>
 					
 					
@@ -85,12 +93,17 @@
                             <span class="icon-addon">
                                 <span class="fa fa-key"></span>
                             </span>
+							@if ($errors->has('password'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                         </div>
                     </div> 
 					
 					<div class="form-group">
                         <div class="input-icon icon-left icon-lg icon-color-primary">
-                            <input name="cpassword" type="password" class="form-control" placeholder="Confirm Password" required>
+                            <input name="password_confirmation" type="password" class="form-control" placeholder="Confirm Password" required>
                             <span class="icon-addon">
                                 <span class="fa fa-key"></span>
                             </span>

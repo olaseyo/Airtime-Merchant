@@ -42,10 +42,9 @@
                                             <label for="default-input" class="col-sm-2 form-control-label">Card Pin</label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="pin" class="form-control" id="default-input"  value="{{ $card[0]->card_pin }}" placeholder="Card Pin" required>
-												
-												 @if ($errors->has('pin'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('pin') }}</strong>
+												@if ($errors->has('card_pin'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('card_pin') }}</strong>
                                     </span>
                                 @endif
                                             </div>
@@ -58,6 +57,11 @@
 
 												<input type="hidden" class="form-control" id="default-input" name="card_id" value="{{ $card[0]->id }}">
                                             </div>
+											@if ($errors->has('amount'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
+                                @endif
                                         </div>
                                       
                                         <div class="form-group row">
@@ -70,6 +74,11 @@
                                                 </select>
 										
                                             </div>
+											@if ($errors->has('provider'))
+                                    <span class="ks-color-danger" role="alert">
+                                        <strong>{{ $errors->first('provider') }}</strong>
+                                    </span>
+                                @endif
                                         </div>
                                         <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">REGISTER</button>

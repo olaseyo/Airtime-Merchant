@@ -8,7 +8,6 @@ use App\recharge;
 use App\cards;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 class CreateController extends Controller
@@ -18,11 +17,12 @@ class CreateController extends Controller
 	public function register(Request $request)
     {
 		
-		
-		
-		if($request->password!=$request->cpassword){
-			 return redirect('/register')->with('signup_Success','Password Mismatch');	 
-		}
+		$request->validate([
+            'email' => 'required|string|email|max:50|unique:users',
+            'users.phone' => 'string|phone|max:30|unique:users',
+            'utype' => 'required|integer',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
 		
       $user = User::create([
         'email' => $request->email,
@@ -36,7 +36,10 @@ class CreateController extends Controller
 	
 	  public function authenticate(Request $request)
     {
-		
+		$request->validate([
+            'email' => 'required|string|email|max:50',
+            'password' => 'required|string|min:6',
+        ]);
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -55,6 +58,12 @@ class CreateController extends Controller
 	//Add new Airtime
 	public function addAirtime(Request $request)
     {
+		//return $request;
+		$request->validate([
+            'card_pin' => 'string|card_pin|max:50|unique:cards',
+            'amount' => 'string|max:10',
+            'provider' => 'string|max:10',
+        ]);
 	
       $user = cards::create([
         'owner_id' => $request->owner_id,
@@ -68,6 +77,12 @@ class CreateController extends Controller
 	//edit Airtime
 	public function editAirtime(Request $request)
     {
+		//return $request;
+		$request->validate([
+            'card_pin' => 'string|card_pin|max:50|unique:cards',
+            'amount' => 'string|max:10',
+            'provider' => 'string|max:10',
+        ]);
       $data =array(
         'card_pin' => $request->pin,
         'amount' => $request->amount,
@@ -164,7 +179,6 @@ class CreateController extends Controller
 		$users=user::all();
 	 $cards=DB::table('cards')
 	->where("owner_id","=",Auth::user()->id)->get();
-	//return $cards;
 	 return view('/list_airtime',compact('cards','users'));
     }
 	
