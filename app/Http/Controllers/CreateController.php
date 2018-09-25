@@ -31,7 +31,7 @@ class CreateController extends Controller
         'password' => bcrypt($request->password),
       ]);
 
-	  return redirect('/register')->with('signup_Success','Registration Successful. Please Login To Continue');
+	 
     }
 	
 	  public function authenticate(Request $request)

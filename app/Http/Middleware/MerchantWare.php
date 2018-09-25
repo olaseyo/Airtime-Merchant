@@ -20,7 +20,7 @@ class MerchantWare
 	 }
     public function handle($request, Closure $next)
     {
-		if($this->auth->getUser()->utype!="1"){
+		if($this->auth->getUser()->account_id!="1"){
 			abort("403","Unauthorized Action.");
 		}
         return $next($request);

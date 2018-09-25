@@ -124,6 +124,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+		  App\Providers\RouteServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -146,6 +147,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Repositories\User\UserRepoServiceProvide::class,
+		Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -158,7 +161,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+       
 
     ],
 
